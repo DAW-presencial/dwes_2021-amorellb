@@ -8,7 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Upload files to </h1>
+<h1>Upload files to HELL</h1>
 <h2>Supported file extensions: jpeg, png, txt and pdf.</h2>
 <form method="POST" enctype="multipart/form-data">
     <input type="file" name="userfile1"><br>
@@ -18,6 +18,7 @@
     <button type="submit" name="submit">Send</button>
     <button type="submit" name="delete">Delete</button>
 </form>
+<h2>Files status</h2>
 </body>
 </html>
 
@@ -25,8 +26,6 @@
 //var_dump($_FILES);
 
 if (isset($_POST['submit'])) {
-  echo 'File sent <br>';
-
   store_files($_FILES);
 }
 
