@@ -60,7 +60,7 @@ include_once "layout_head.php";
 echo "<div class='col-sm-6 col-md-4 col-md-offset-4'>";
 
 // get 'action' value in url parameter to display corresponding prompt messages
-$action = isset($_GET['action']) ? $_GET['action'] : "";
+$action = $_GET['action'] ?? "";
 
 // tell the user he is not yet logged in
 if ($action == 'not_yet_logged_in') {
@@ -89,7 +89,7 @@ if ($access_denied) {
 echo "<div class='account-wall'>";
 echo "<div id='my-tab-content' class='tab-content'>";
 echo "<div class='tab-pane active' id='login'>";
-echo "<img class='profile-img' src='images/login-icon.png'>";
+echo "<img class='profile-img' src='images/login-icon.png' alt='login-icon'>";
 echo "<form class='form-signin' action='" . htmlspecialchars($_SERVER["PHP_SELF"]) . "' method='post'>";
 echo "<input type='text' name='email' class='form-control' placeholder='Email' required autofocus />";
 echo "<input type='password' name='password' class='form-control' placeholder='Password' required />";

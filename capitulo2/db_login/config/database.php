@@ -1,13 +1,15 @@
 <?php
-
+// used to get mysql database connection
 class Database
 {
+  // specify your own database credentials
   private string $host = "localhost";
   private string $db_name = "php_db";
   private string $username = "php_db_user";
   private string $password = "PHPDBuser123!";
   public $conn;
 
+  // get the database connection
   public function getConnection(): ?PDO
   {
     $this->conn = null;
