@@ -6,7 +6,6 @@ session_start();
 <?php
 // Get the info related to the session and cookies
 
-// echo 'Cookie info: '. $_COOKIE['CookieParty'] .'<br>';
 // echo 'Cookie session name: '. $_COOKIE[session_name()] .'<br>';
 // echo 'Session id: '.session_id() .'<br>';
 // echo 'Session name: '.session_name() .'<br>';
