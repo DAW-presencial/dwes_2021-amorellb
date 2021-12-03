@@ -1,6 +1,6 @@
 <?php
 
-class Cockies_class
+class Access_private_properties
 {
   public $first_name;
   protected $last_name;
