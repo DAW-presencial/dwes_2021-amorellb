@@ -31,7 +31,8 @@
     <h2>Uploaded info</h2>
 
     <?php
-    var_dump($_FILES);
+    // var_dump($_FILES);
+    // var_dump($_POST);
 
     if (isset($_POST['submit'])) {
     echo "Name: " . $_POST['name'] . "<br>";
@@ -53,13 +54,13 @@ function store_uploaded_files(array $files)
 {
   $upload_dir = __DIR__;
   foreach ($files as $user_file) {
-    if (!$user_file["error"] == UPLOAD_ERR_OK) {
+    //if (!$user_file["error"] == UPLOAD_ERR_OK) {
       $size = $user_file["size"];
       $name = basename($user_file["name"]);
       $tmp_name = $user_file["tmp_name"];
       echo 'File ' . $name . ' is successfully uploaded with a size of ' . $size . 'bytes<br>';
       move_uploaded_file($tmp_name, "$upload_dir/$name");
-    }
+    //}
   }
 }
 ?>
