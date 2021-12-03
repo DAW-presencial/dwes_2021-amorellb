@@ -5,6 +5,7 @@
 Despliegue en: [amorell](http://amorell.ifc33b.cifpfbmoll.eu/)
 
 ### Ejercicio 3:
+Directorio: `dwes_2021-amorellb/examen_dwes/ex3_classes`
 - a) Sí se activan, de forma que se pueden leer esas propiedades. En el ejemplo que he probado se activaban ambas
 funciones (get y set), sin embargo siempre me devuelve los valores pasados al constructor.
 - b) Tanto las propiedades privadas como las protegidas se heredan de padre a hijos, de manera que una clase
