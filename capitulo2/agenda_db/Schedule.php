@@ -17,16 +17,16 @@ class Schedule
 
   function writeContacts(): bool
   {
-    $query = 'insert into ' . $this->table_name . ' (firstname, lastname, contact_number)
-    values (firstname = :username, lastname = :lastname, contact_number = :phone)';
+    $query = "INSERT INTO " . $this->table_name . " (firstname, lastname, contact_number)
+    VALUES (:username, :lastname, :phone)";
 
     // prepare the query
     $stmt = $this->conn->prepare($query);
 
     // bind the values
-    $stmt->bindParam(':firstname', $this->username);
+    $stmt->bindParam(':username', $this->username);
     $stmt->bindParam(':lastname', $this->lastname);
-    $stmt->bindParam(':contact_number', $this->phone);
+    $stmt->bindParam(':phone', $this->phone);
 
     // execute the query
     $stmt->execute();
@@ -35,9 +35,10 @@ class Schedule
 
   function readContacts()
   {
-    $query = 'select * from ' . $this->table_name;
+    $query = "SELECT * FROM " . $this->table_name;
 
     $stmt = $this->conn->prepare($query);
+    $stmt->execute();
     $data = $stmt->fetchAll();
 
     return $data;
@@ -45,7 +46,7 @@ class Schedule
 
   function deleteContact ($name): bool {
 
-    $query = 'delete * from ' . $this->table_name . ' where firstname = :name';
+    $query = "DELETE FROM " . $this->table_name . " WHERE firstname = :name";
 
     // prepare the query
     $stmt = $this->conn->prepare($query);
