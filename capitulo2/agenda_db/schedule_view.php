@@ -79,13 +79,13 @@ $contacts = new Schedule($db);
     <h1>Schedule</h1>
 
     <form method="POST" enctype="multipart/form-data">
-        <label for="name"> Write your name:
+        <label for="name"> Write a name:
             <input type="text" name="name" value="" placeholder="Name"/>
         </label><br>
-        <label for="lastname"> Write your name:
+        <label for="lastname"> Write a lastname:
             <input type="text" name="lastname" value="" placeholder="Last name"/>
         </label><br>
-        <label for="phone"> Write your phone:
+        <label for="phone"> Write a phone:
             <input type="number" name="phone" value="" placeholder="Phone"/>
         </label><br>
         <button class="add" type="submit" name="add">Add</button>
