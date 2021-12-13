@@ -33,15 +33,22 @@ class Schedule
     return true;
   }
 
-  function readContacts()
+  function updateContacts(): bool
   {
-    $query = "SELECT * FROM " . $this->table_name;
+    $query = "UPDATE " . $this->table_name . " SET lastname = :lastname, contact_number = :phone
+    WHERE firstname = :name";
 
+    // prepare the query
     $stmt = $this->conn->prepare($query);
-    $stmt->execute();
-    $data = $stmt->fetchAll();
 
-    return $data;
+    // bind the values
+    $stmt->bindParam(':name', $this->username);
+    $stmt->bindParam(':lastname', $this->lastname);
+    $stmt->bindParam(':phone', $this->phone);
+
+    // execute the query
+    $stmt->execute();
+    return true;
   }
 
   function deleteContact ($name): bool {
@@ -57,5 +64,16 @@ class Schedule
     // execute the query
     $stmt->execute();
     return true;
+  }
+
+  function readContacts()
+  {
+    $query = "SELECT * FROM " . $this->table_name;
+
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute();
+    $data = $stmt->fetchAll();
+
+    return $data;
   }
 }

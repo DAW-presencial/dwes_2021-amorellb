@@ -88,16 +88,23 @@ $contacts = new Schedule($db);
         <label for="phone"> Write your phone:
             <input type="number" name="phone" value="" placeholder="Phone"/>
         </label><br>
-        <button class="send" type="submit" name="submit">Send</button>
+        <button class="add" type="submit" name="add">Add</button>
+        <button class="update" type="submit" name="update">Update</button>
         <button class="delete" type="submit" name="delete">Delete</button>
     </form>
 
   <?php
-//  Write data into the database
-  if (isset($_POST['submit'])) {
+  if (isset($_POST['add']) || isset($_POST['update'])) {
     $new_name = filter_input(INPUT_POST, 'name');
     $new_lastname = filter_input(INPUT_POST, 'lastname');
     $new_phone = filter_input(INPUT_POST, 'phone');
+  }
+
+//  Write data into the database
+  if (isset($_POST['add'])) {
+//    $new_name = filter_input(INPUT_POST, 'name');
+//    $new_lastname = filter_input(INPUT_POST, 'lastname');
+//    $new_phone = filter_input(INPUT_POST, 'phone');
 
     if (empty($new_name)) {
       echo '<p style="color: crimson">Write a name please</p>';
@@ -111,6 +118,25 @@ $contacts = new Schedule($db);
     }
   }
 
+  // Update a contact from the data base
+  if (isset($_POST['update'])) {
+//    $new_name = filter_input(INPUT_POST, 'name');
+//    $new_lastname = filter_input(INPUT_POST, 'lastname');
+//    $new_phone = filter_input(INPUT_POST, 'phone');
+
+    if (empty($new_name)) {
+      echo '<p style="color: crimson">Write a name please</p>';
+    } elseif (strlen((string)$new_phone) < 9 || strlen((string)$new_phone) > 9) {
+      echo '<p style="color: crimson">Write a valid phone number (9 digits)</p>';
+    } else {
+      $contacts->username = $new_name;
+      $contacts->lastname = $new_lastname;
+      $contacts->phone = $new_phone;
+      $contacts->updateContacts();
+    }
+  }
+
+  //  Delete a contact from the database
   if (isset($_POST['delete'])) {
     $new_name = filter_input(INPUT_POST, 'name');
 
