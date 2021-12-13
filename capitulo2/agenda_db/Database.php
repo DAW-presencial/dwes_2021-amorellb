@@ -5,9 +5,9 @@ final class Database
 
   private static $conn;
   private const HOST = "localhost";
-  private const DB_NAME = "schedule_db";
-  private const USERNAME = "php_db_user";
-  private const PASSWORD = "PHPDBuser123!";
+  private const DB_NAME = "amorell_db";
+  private const USERNAME = "amorell_usr";
+  private const PASSWORD = "abc123.";
 
   public static function getConnection(): PDO
   {
@@ -15,7 +15,7 @@ final class Database
       return self::$conn;
     }
     try {
-      self::$conn = new PDO("mysql:host=" . self::HOST . ";dbname=" . self::DB_NAME, self::USERNAME, self::PASSWORD);
+      self::$conn = new PDO("pgsql:host=" . self::HOST . ";dbname=" . self::DB_NAME, self::USERNAME, self::PASSWORD);
     } catch (PDOException $exception) {
       echo "Connection error: " . $exception->getMessage();
     }
