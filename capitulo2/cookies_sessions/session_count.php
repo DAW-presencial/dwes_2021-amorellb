@@ -1,7 +1,6 @@
 <?php
 // session_start();
-
-var_dump($_COOKIE);
+// var_dump($_COOKIE);
 
 if (isset($_COOKIE['niceCookie'])) {
   setcookie('niceCookie', ++$_COOKIE['niceCookie']);
