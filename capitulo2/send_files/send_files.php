@@ -50,16 +50,41 @@ function store_files($files)
 
 function check_upload($file)
 {
-  echo match ($file["error"]) {
-    UPLOAD_ERR_INI_SIZE => 'Exceeded file size limit. File name: ' . $file["name"] . '<br>',
-    UPLOAD_ERR_FORM_SIZE => 'Exceeded file size limit. File name: ' . $file["name"] . '<br>',
-    UPLOAD_ERR_PARTIAL => 'The file was partially upload. File name: ' . $file["name"] . '<br>',
-    UPLOAD_ERR_NO_FILE => 'No file sent.<br>',
-    UPLOAD_ERR_NO_TMP_DIR => 'No temporal directory. File name: ' . $file["name"] . '<br>',
-    UPLOAD_ERR_CANT_WRITE => 'Can not write the file into the disc. File name: ' . $file["name"] . '<br>',
-    UPLOAD_ERR_EXTENSION => 'Wrong file extension. File name: ' . $file["name"] . '<br>',
-    default => 'Unable to upload the file. File name:' . $file["name"] . '<br>',
-  };
+    // Not working on remote
+//  echo match ($file["error"]) {
+//    UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE => 'Exceeded file size limit. File name: ' . $file["name"] . '<br>',
+//    UPLOAD_ERR_PARTIAL => 'The file was partially upload. File name: ' . $file["name"] . '<br>',
+//    UPLOAD_ERR_NO_FILE => 'No file sent.<br>',
+//    UPLOAD_ERR_NO_TMP_DIR => 'No temporal directory. File name: ' . $file["name"] . '<br>',
+//    UPLOAD_ERR_CANT_WRITE => 'Can not write the file into the disc. File name: ' . $file["name"] . '<br>',
+//    UPLOAD_ERR_EXTENSION => 'Wrong file extension. File name: ' . $file["name"] . '<br>',
+//    default => 'Unable to upload the file. File name:' . $file["name"] . '<br>',
+//  };
+
+  switch ($file["error"]) {
+    case UPLOAD_ERR_INI_SIZE:
+    case UPLOAD_ERR_FORM_SIZE:
+      echo 'Exceeded file size limit. File name: ' . $file["name"] . '<br>';
+      break;
+    case UPLOAD_ERR_PARTIAL:
+      echo 'The file was partially upload. File name: ' . $file["name"] . '<br>';
+      break;
+    case UPLOAD_ERR_NO_FILE:
+      echo 'No file sent.<br>';
+      break;
+    case UPLOAD_ERR_NO_TMP_DIR:
+      echo 'No temporal directory. File name: ' . $file["name"] . '<br>';
+      break;
+    case UPLOAD_ERR_CANT_WRITE:
+      echo 'Can not write the file into the disc. File name: ' . $file["name"] . '<br>';
+      break;
+    case UPLOAD_ERR_EXTENSION:
+      echo 'Wrong file extension. File name: ' . $file["name"] . '<br>';
+      break;
+    default:
+      echo 'Unable to upload the file. File name:' . $file["name"] . '<br>';
+      break;
+  }
 }
 
 // TODO: Not working.
